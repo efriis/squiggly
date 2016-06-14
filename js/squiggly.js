@@ -3,6 +3,8 @@ module.exports = (function () {
     function Squiggly(template, openingCharacter, closingCharacter) {
         if (openingCharacter === void 0) { openingCharacter = "{"; }
         if (closingCharacter === void 0) { closingCharacter = "}"; }
+        this.template = [];
+        this.inserts = [];
         var curr = "";
         var prev = "";
         for (var i = 0; i < template.length; i++) {

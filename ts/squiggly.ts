@@ -2,6 +2,9 @@ export = class Squiggly {
   template: string[];
   inserts:string[];
   constructor(template: string,openingCharacter:string="{",closingCharacter:string="}") {
+    this.template = [];
+    this.inserts = [];
+    
     let curr = "";
     let prev:string = "";
     for(let i = 0; i<template.length; i++) {
