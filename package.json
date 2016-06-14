@@ -17,7 +17,7 @@
     "template",
     "templating"
   ],
-  "author": "Erick Friis",
+  "author": "Erick Friis <efriis@mit.edu>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/efriis/squiggly/issues"

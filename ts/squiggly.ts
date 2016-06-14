@@ -1,17 +1,17 @@
 export = class Squiggly {
   template: string[];
   inserts:string[];
-  constructor(template: string) {
+  constructor(template: string,openingCharacter:string="{",closingCharacter:string="}") {
     let curr = "";
     let prev:string = "";
     for(let i = 0; i<template.length; i++) {
       let c = template.charAt(i);
 
-      if(c==="{" && prev!=="\\") {
+      if(c===openingCharacter && prev!=="\\") {
         if(this.template.length !== this.inserts.length) throw new RangeError("Squiggly brackets overlap");
         this.template.push(curr);
         curr = "";
-      } else if(c==="}" && prev!=="\\") {
+      } else if(c===closingCharacter && prev!=="\\") {
         if(this.template.length - this.inserts.length !== 1) throw new RangeError("Squiggly brackets overlap");
         this.inserts.push(curr);
         curr = "";

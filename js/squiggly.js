@@ -1,17 +1,19 @@
 "use strict";
 module.exports = (function () {
-    function Squiggly(template) {
+    function Squiggly(template, openingCharacter, closingCharacter) {
+        if (openingCharacter === void 0) { openingCharacter = "{"; }
+        if (closingCharacter === void 0) { closingCharacter = "}"; }
         var curr = "";
         var prev = "";
         for (var i = 0; i < template.length; i++) {
             var c = template.charAt(i);
-            if (c === "{" && prev !== "\\") {
+            if (c === openingCharacter && prev !== "\\") {
                 if (this.template.length !== this.inserts.length)
                     throw new RangeError("Squiggly brackets overlap");
                 this.template.push(curr);
                 curr = "";
             }
-            else if (c === "}" && prev !== "\\") {
+            else if (c === closingCharacter && prev !== "\\") {
                 if (this.template.length - this.inserts.length !== 1)
                     throw new RangeError("Squiggly brackets overlap");
                 this.inserts.push(curr);
